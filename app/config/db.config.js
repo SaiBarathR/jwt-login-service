@@ -5,8 +5,8 @@ module.exports = {
     HOST: process.env.DB_HOST,// add your db host here
     USER: process.env.DB_USER,// add your db username here
     PASSWORD: process.env.DB_PASS,// add your db password here
-    DB: "logindata", // add your db name here
-    dialect: "mysql",
+    DB: process.env.DB_NAME,// add your db name here
+    dialect: process.env.DB_DIALECT,// add your db name here
     pool: {
         max: 5,
         min: 0,
