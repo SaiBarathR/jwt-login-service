@@ -1,8 +1,11 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 module.exports = {
-    HOST: "",// add your db host here
-    USER: "",// add your db user here
-    PASSWORD: "",// add your db password here
-    DB: "logindata",//
+    HOST: process.env.DB_HOST,// add your db host here
+    USER: process.env.DB_USER,// add your db username here
+    PASSWORD: process.env.DB_PASS,// add your db password here
+    DB: "logindata", // add your db name here
     dialect: "mysql",
     pool: {
         max: 5,
