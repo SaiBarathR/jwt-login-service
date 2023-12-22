@@ -7,10 +7,15 @@ module.exports = {
     PASSWORD: process.env.DB_PASS,// add your db password here
     DB: process.env.DB_NAME,// add your db name here
     dialect: process.env.DB_DIALECT,// add your db name here
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    }
-};
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false, // for self-signed certificates
+        },
+        pool: {
+            max: 5,
+            min: 0,
+            acquire: 30000,
+            idle: 10000
+        }
+    };
