@@ -10,12 +10,13 @@ module.exports = {
     dialectOptions: {
         ssl: {
             require: true,
-            rejectUnauthorized: false, // for self-signed certificates
-        },
-        pool: {
-            max: 5,
-            min: 0,
-            acquire: 30000,
-            idle: 10000
+            rejectUnauthorized: false // <<<<<<< YOU NEED THIS
         }
-    };
+    },
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+};
