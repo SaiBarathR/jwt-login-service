@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 module.exports = {
-    secret: "" // add a random combination of characters and numbers here to make your secret key more secure
+    secret: process.env.AUTH_SECRET,
 };
