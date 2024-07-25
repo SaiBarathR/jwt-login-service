@@ -9,10 +9,10 @@ exports.getReportsData = async (req, res) => {
         const data = {};
         for (const type of types) {
             const query = type === "request" ? `kisshit:api:${type}:${todaysDate}` : `kisshit:api:ivr:${type}:${todaysDate}`;
-            console.log("query", query);
+            console.log("query used", query);
             data[type] = await redisClient.zRangeWithScores(query, 0, -1, 'WITHSCORES');
         }
-        console.log("Data from Redis:", data);
+        console.log("fetched data successfully");
         res.status(200).send({
             data: data,
             status: 'success'
