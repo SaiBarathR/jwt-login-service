@@ -9,7 +9,14 @@ const authConfig = require("./app/config/auth.config");
 db.sequelize.sync();
 
 var corsOptions = {
-    origin: authConfig.corsUrls,
+    origin: function (origin, callback) {
+        const allowedOrigins = authConfig.corsUrls.split(',');
+        if (!origin || allowedOrigins.indexOf(origin) !== -1 || origin.startsWith('http://localhost')) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 };
 
 app.use(cors(corsOptions));
