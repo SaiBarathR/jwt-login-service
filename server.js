@@ -4,10 +4,7 @@ const redis = require("redis");
 
 const app = express();
 
-const db = require("./app/models");
 const authConfig = require("./app/config/auth.config");
-
-db.sequelize.sync();
 
 var corsOptions = {
     origin: function (origin, callback) {
@@ -35,7 +32,7 @@ app.get("/", (req, res) => {
 
 // Redis configuration
 const redisConnectionOption = {
-    socket:{
+    socket: {
         host: process.env.REDIS_HOST,
         port: Number(process.env.REDIS_PORT),
     },
@@ -55,25 +52,18 @@ redisClient.on("connect", async () => {
     console.log("Connected to Redis");
 });
 
-redisClient.connect().then(() => (resp)=>{
+redisClient.connect().then(() => (resp) => {
     console.log("Connected to Redis");
-}).catch((err)=>{
+}).catch((err) => {
     console.error("Redis error: ", err);
 });
 
 exports.redisClient = redisClient;
 
+
 require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
 require('./app/routes/reports.routes')(app);
-async function getReportsData() {
-    try {
-        const data = await redisClient.zRangeWithScores('kisshit:api:request:20240725', 0, -1);
-        console.log("Data from Redis:", data);
-    } catch (err) {
-        console.error("Error fetching data from Redis:", err);
-    }
-}
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

@@ -102,7 +102,7 @@ DB_DIALECT= # Database dialect.
 ### Authentication Endpoints
 
 - **POST /api/auth/signup**: Register a new user.
-- **POST /api/auth/signin**: Sign in with email and password.
+- **POST /api/auth/signin**: Sign in with account and password.
 - **POST /api/auth/googleSignIn**: Sign in/register with Google.
 
 ### User Management Endpoints
@@ -110,7 +110,7 @@ DB_DIALECT= # Database dialect.
 - **GET /api/test/all**: Public content.
 - **GET /api/test/user**: User content (requires authentication).
 - **POST /api/userInfo**: Get user information (requires authentication).
-- **DELETE /api/deleteAccount/:type/:email**: Delete user account (requires authentication).
+- **DELETE /api/deleteAccount/:type/:account**: Delete user account (requires authentication).
 
 ## Usage
 
@@ -121,7 +121,7 @@ DB_DIALECT= # Database dialect.
     ```
 
     Parameters:
-    - `email`: User's email.
+    - `account`: User's account.
     - `password`: User's password (optional).
     - `name`: User's name.
     - `age`: User's age.
@@ -135,7 +135,7 @@ DB_DIALECT= # Database dialect.
     ```
 
     Parameters:
-    - `email`: User's email.
+    - `account`: User's account.
     - `password`: User's password.
 
 3. **Google Sign-In**
@@ -158,7 +158,7 @@ DB_DIALECT= # Database dialect.
 5. **Delete User Account**
 
     ```bash
-    DELETE /api/deleteAccount/:type/:email
+    DELETE /api/deleteAccount/:type/:account
     ```
 
     Requires authentication.

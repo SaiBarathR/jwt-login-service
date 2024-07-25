@@ -10,23 +10,16 @@
   "keywords": [
     "node.js",
     "express",
-    "jwt",
-    "mysql",
     "authentication"
   ],
   "author": "sai barath",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "google-auth-library": "^9.0.0",
-    "jsonwebtoken": "^9.0.1",
     "node-fetch": "^2.7.0",
     "nodemon": "^3.0.2",
-    "pg": "^8.11.3",
-    "redis": "^4.6.15",
-    "sequelize": "^6.32.1"
+    "redis": "^4.6.15"
   }
 }
