@@ -9,9 +9,9 @@ const dialectOptions =
         PASSWORD: process.env.DB_PASS,// add your db password here
         DB: process.env.DB_NAME,// add your db name here
         dialect: process.env.DB_DIALECT,// add your db name here    
-        dialectOptions: process.env.MODE === 'dev' ? {} : {
+        dialectOptions: {
             ssl: {
-                require: true,
+                require: false,
                 rejectUnauthorized: false
             }
         },
