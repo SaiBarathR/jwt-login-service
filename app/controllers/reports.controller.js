@@ -1,9 +1,11 @@
 const server = require('../../server');
 const redisClient = server.redisClient;
+const moment = require('moment-timezone');
+const timeZone = process.env.TIMEZONE || 'Asia/Kolkata';
 
 exports.getReportsData = async (req, res) => {
     try {
-        const todaysDate = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        let todaysDate = moment().tz("Asia/Kolkata").format('YYYYMMDD');
         console.log("todaysDate", todaysDate);
         const types = ['request', 'queued'];
         const data = {};
