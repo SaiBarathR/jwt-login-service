@@ -7,10 +7,10 @@ exports.getReportsData = async (req, res) => {
     try {
         let todaysDate = moment().tz("Asia/Kolkata").format('YYYYMMDD');
         console.log("todaysDate", todaysDate);
-        const types = ['request', 'queued'];
+        const types = ['request', 'dialedHour'];
         const data = {};
         for (const type of types) {
-            const query = type === "request" ? `kisshit:api:${type}:${todaysDate}` : `kisshit:api:ivr:${type}:${todaysDate}`;
+            const query = type === "request" ? `kisshit:api:${type}:${todaysDate}` : `kisshit:${type}:request:${todaysDate}`;
             console.log("query used", query);
             data[type] = await redisClient.zRangeWithScores(query, 0, -1, 'WITHSCORES');
         }
