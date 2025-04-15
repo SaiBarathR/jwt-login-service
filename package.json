@@ -4,8 +4,9 @@
   "description": "node server to provide jwt auth for a signin/signup client",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js && npm run sentry:sourcemaps",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org ozonetel-cq --project node-express-test ./out && sentry-cli sourcemaps upload --org ozonetel-cq --project node-express-test ./out"
   },
   "keywords": [
     "node.js",
@@ -17,6 +18,8 @@
   "author": "sai barath",
   "license": "ISC",
   "dependencies": {
+    "@sentry/cli": "^2.43.0",
+    "@sentry/node": "^9.12.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
